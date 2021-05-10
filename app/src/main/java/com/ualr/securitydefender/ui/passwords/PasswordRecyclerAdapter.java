@@ -116,12 +116,12 @@ public class PasswordRecyclerAdapter extends RecyclerView.Adapter {
             this.passwordValue = itemView.findViewById(R.id.password_value);
             this.passwordValue.setKeyListener(null);
             lyt_parent = itemView.findViewById(R.id.lyt_parent);
-            lyt_parent.setOnClickListener(new View.OnClickListener() {
+            /*lyt_parent.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     mListener.onItemClick(v, getLayoutPosition());
                 }
-            });
+            });*/
         }
         //SETTERS
 

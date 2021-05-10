@@ -1,24 +1,17 @@
 package com.ualr.securitydefender;
 
 import android.os.Bundle;
-import android.util.Log;
-import android.view.View;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.ualr.securitydefender.data.PasswordEntity;
-import com.ualr.securitydefender.ui.passwords.PasswordRecyclerAdapter;
+import com.ualr.securitydefender.data.PasswordRepository;
 import com.ualr.securitydefender.ui.passwords.PasswordsFragment;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.Toolbar;
 import androidx.navigation.NavController;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
-
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEvent;
-import net.yslibrary.android.keyboardvisibilityevent.KeyboardVisibilityEventListener;
 
 
 public class MainActivity extends AppCompatActivity {
@@ -26,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
 
     private FloatingActionButton mFab;
     private PasswordsFragment mPasswordFragment;
-
+    private PasswordRepository passwordRepository;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

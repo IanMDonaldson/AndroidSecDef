@@ -57,12 +57,14 @@ public class NewNoteFragment extends DialogFragment {
                 noteEntity.setTitle(noteTitleEditText.getEditableText().toString());
                 noteEntity.setNote(noteInfoEditText.getEditableText().toString());
                 noteEntity.setSelected(false);
-
-                List<NoteEntity> currentNoteItems = vm.getNotes().getValue();
+                //don't need this as viewmodel adds it to database anyway
+                // should add it during the onPause or onStop method of the parent
+                // fragment this is called from but fuck all that
+                /*List<NoteEntity> currentNoteItems = vm.getNotes().getValue();
                 if (currentNoteItems != null) {
                     currentNoteItems.add(0,noteEntity);
-                }
-                vm.setNotes(currentNoteItems);
+                }*/
+                vm.insert(noteEntity);
                 dismissFragment();
             }
         });

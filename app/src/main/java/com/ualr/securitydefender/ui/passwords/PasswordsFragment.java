@@ -42,35 +42,19 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toolbar;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentActivity;
-import androidx.fragment.app.FragmentContainer;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.lifecycle.ViewModelStore;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
-import androidx.navigation.fragment.NavHostFragment;
-import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-import androidx.room.Room;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.ualr.securitydefender.R;
-import com.ualr.securitydefender.data.Database;
-import com.ualr.securitydefender.data.PasswordDAO;
 import com.ualr.securitydefender.data.PasswordEntity;
-import com.ualr.securitydefender.databinding.FragmentPasswordsBinding;
-
-import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -91,7 +75,6 @@ public class PasswordsFragment extends Fragment implements PasswordRecyclerAdapt
 
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
 
     }
@@ -100,6 +83,7 @@ public class PasswordsFragment extends Fragment implements PasswordRecyclerAdapt
 
         View root = inflater.inflate(R.layout.fragment_passwords, container, false);
         passwordsViewModel = new ViewModelProvider(getActivity()).get(PasswordsViewModel.class);
+        passwordsViewModel.setPasswordRepository(this.getActivity().getApplication());
         setHasOptionsMenu(true);
         return root;
     }

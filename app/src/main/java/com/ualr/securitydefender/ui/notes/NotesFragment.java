@@ -46,6 +46,7 @@ public class NotesFragment extends Fragment implements NoteRecyclerAdapter.OnIte
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         View root = inflater.inflate(R.layout.fragment_notes, container, false);
         notesViewModel = new ViewModelProvider(getActivity()).get(NotesViewModel.class);
+        notesViewModel.setNoteRepository(this.getActivity().getApplication());
         setHasOptionsMenu(true);
         return root;
     }
@@ -62,13 +63,16 @@ public class NotesFragment extends Fragment implements NoteRecyclerAdapter.OnIte
 
         noteRecyclerAdapter = new NoteRecyclerAdapter(getContext(), notesViewModel.getNotes().getValue());
         noteRecyclerAdapter.setOnItemClickListener(this);
+        //added
+        recyclerView.setAdapter(noteRecyclerAdapter);
+        //added
         notesViewModel.getNotes().observeForever(new Observer<List<NoteEntity>>() {
             @Override
             public void onChanged(List<NoteEntity> noteEntities) {
                 noteRecyclerAdapter.updateNoteList(notesViewModel.getNotes().getValue());
             }
         });
-        recyclerView.setAdapter(noteRecyclerAdapter);
+        //recyclerView.setAdapter(noteRecyclerAdapter);
 
         addButton.setOnClickListener(new View.OnClickListener() {
             @Override

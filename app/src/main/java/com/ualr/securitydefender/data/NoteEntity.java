@@ -12,10 +12,10 @@ public class NoteEntity {
     private int id;
 
     @ColumnInfo(name = "title")
-    private String title;
+    private String title = "";
 
     @ColumnInfo(name = "note")
-    private String note;
+    private String note = "";
 
     @Ignore
     private boolean selected;
@@ -28,7 +28,7 @@ public class NoteEntity {
     public NoteEntity(String title, String note){
         this.title = title;
         this.note = note;
-
+        this.selected = false;
     }
 
     public int getId() {

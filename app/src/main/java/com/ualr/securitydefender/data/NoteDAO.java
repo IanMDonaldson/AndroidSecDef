@@ -21,7 +21,7 @@ public interface NoteDAO {
     LiveData<NoteEntity> getNote(int id);
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
-    void  addNote(NoteEntity noteEntity);
+    void addNote(NoteEntity noteEntity);
 
     @Update(onConflict = OnConflictStrategy.REPLACE)
     void updateNote(NoteEntity noteEntity);

@@ -27,6 +27,7 @@ public class PasswordEntity {
 
     @Ignore
     private String websiteIconLetter = null;
+    @Ignore
     private boolean selected;
 
     public PasswordEntity() {
